@@ -1,4 +1,4 @@
-# Compositor
+# Ulombe
 Ulombe is a Confiuration Management framework that allows you to automate your infrastructure using
 your favorite programming language, wether it's JavaScript, Python, Ruby, Java or Golang.
 
