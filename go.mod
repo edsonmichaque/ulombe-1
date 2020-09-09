@@ -1,4 +1,4 @@
-module github.com/edsonmichaque/artista
+module github.com/edsonmichaque/ulombe
 
 go 1.14
 
