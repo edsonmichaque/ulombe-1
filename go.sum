@@ -2,3 +2,9 @@ gitlab.com/ulombe/sdk v0.0.0-20200919202645-91079582e6fc h1:0ve9hXW82XKw1fft23ms
 gitlab.com/ulombe/sdk v0.0.0-20200919202645-91079582e6fc/go.mod h1:2G9zAxTcGifAlfd5O37yHVB2u/uCJKYZVjXkXzwbuhs=
 gitlab.com/ulombe/sdk v0.0.0-20200919203154-89237f13eaa6 h1:i/anvVfKptu4+hdvGbUAAcGSp6ESCimtr/QWBPEf0u8=
 gitlab.com/ulombe/sdk v0.0.0-20200919203154-89237f13eaa6/go.mod h1:2G9zAxTcGifAlfd5O37yHVB2u/uCJKYZVjXkXzwbuhs=
+gitlab.com/ulombe/sdk v0.0.0-20200919203817-2d2f0e835099 h1:t3gF/cqQ+bUjbB6d3DGEDyCaXRbSqPysHT/XP6VDKzk=
+gitlab.com/ulombe/sdk v0.0.0-20200919203817-2d2f0e835099/go.mod h1:2G9zAxTcGifAlfd5O37yHVB2u/uCJKYZVjXkXzwbuhs=
+gitlab.com/ulombe/sdk v0.0.0-20200919204050-ebc95b9643b0 h1:p1miKS1OCW3BcdoThcXn7toY9KUoC6XHbISVzoJ56qs=
+gitlab.com/ulombe/sdk v0.0.0-20200919204050-ebc95b9643b0/go.mod h1:2G9zAxTcGifAlfd5O37yHVB2u/uCJKYZVjXkXzwbuhs=
+gitlab.com/ulombe/sdk v0.1.0 h1:sRq2H6GciyUQdiZBFXhE/fsyuC7keql2PcVpzWod7WE=
+gitlab.com/ulombe/sdk v0.1.0/go.mod h1:2G9zAxTcGifAlfd5O37yHVB2u/uCJKYZVjXkXzwbuhs=
