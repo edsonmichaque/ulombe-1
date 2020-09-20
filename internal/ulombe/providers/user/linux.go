@@ -70,11 +70,11 @@ Linux.AddScriptGenerator(func(p *Provider) func(op string, data map[string]inter
 			command = fmt.Sprintf("%s %s", command, username.(string))
 
 			if uid, ok := data[attrUid]; ok {
-				command = fmt.Sprintf("%s -u %s", command, uid)
+				command = fmt.Sprintf("%s -u %s", command, uid.(string))
 			}
 
 			if gid, ok := data[attrGid]; ok {
-				command = fmt.Sprintf("%s -g %s", command, gid)
+				command = fmt.Sprintf("%s -g %s", command, gid.(string))
 			}
 
 			if system, ok := data[attrSystem]; ok && system.(bool) {
@@ -82,7 +82,7 @@ Linux.AddScriptGenerator(func(p *Provider) func(op string, data map[string]inter
 			}
 
 			if shell, ok := data[attrShell]; ok {
-				command = fmt.Sprintf("%s -s %s", command, shell)
+				command = fmt.Sprintf("%s -s %s", command, shell.(string))
 			}
 
 			r := strings.NewReplacer(
