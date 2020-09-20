@@ -1,9 +1,11 @@
 package user
 
 import (
-	fmt
+	"fmt"
+	"strings"
 	ulombe "gitlab.com/ulombe/sdk"
 	provider "gitlab.com/ulombe/sdk/provider"
+
 )
 
 Linux := ulombe.NewProvider("linux")
@@ -23,30 +25,77 @@ const (
 	attrUid = "uid"
 	attrGid = "gid"
 	attrGroups = "groups"
+	attrExpireDate = "expire_date"
+	attrHome = "home"
 )
 
 var aliases = map[string][]string{
-	OpCreate: []string{"new"},
-	OpUpdate: []string{"modify"},
-	Opdelete: []string{"remove"}
+	OpCreate: []string{
+		"new",
+	},
+	OpUpdate: []string{
+		"modify",
+	},
+	Opdelete: []string{
+		"remove",
+	},
 }
+
+testUserExists := `
+if getent passwd <user> > /dev/null; then
+    <command>
+else
+    printf "User %s doens't exist\n", <user>
+fi
+`
+
+testUserDoenstExist := `
+if getent passwd  <user> > /dev/null; then
+    printf "User %s already exists\n", <user> 
+else
+    <command>
+fi
+`
 
 Linux.AddScriptGenerator(func(p *Provider) func(op string, data map[string]interface{}) string {
 	return func(op string, data map[string]interface{}) string {
+		username, _ := data[attrUsername]
 
 		if p.GetOperation(op) == opCreate {
+			command := "useradd"
 
+		} else if operation := p.GetOperation(op);  operation.Name == opUpdate {
+			command := "usermod"
 
-		} else if p.GetOperation(op) == opUpdate {
+			command = fmt.Sprintf("%s %s", command, username.(string))
 
-			baseCommand = "usermod"
+			if uid, ok := data[attrUid]; ok {
+				command = fmt.Sprintf("%s -u %s", command, uid)
+			}
+
+			if gid, ok := data[attrGid]; ok {
+				command = fmt.Sprintf("%s -g %s", command, gid)
+			}
+
+			if system, ok := data[attrSystem]; ok && system.(bool) {
+				command = fmt.Sprintf("%s -r", command)
+			}
+
+			if shell, ok := data[attrShell]; ok {
+				command = fmt.Sprintf("%s -s %s", command, shell)
+			}
+
+			r := strings.NewReplacer(
+				"<user>", username, "<command>", command
+			)
+
+			return r.Replace(testUserExist)
 
 		} else if p.GetOperation(op) == opDelete {
-
-			baseCommand = "userdel"
+			command = "userdel"
 
 		} else {
-			// Return Error
+
 		}
 	}
 });
@@ -61,4 +110,5 @@ Linux.AddOperation(opCreate, aliases[opCreate], []Attribute{
 	provider.NewAttribute(attrShell, provider.String),
 	provider.NewAttribute(attrSystem, provider.Boolean),
 })
+
 
