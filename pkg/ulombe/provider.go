@@ -8,6 +8,21 @@ type ProviderList struct {
 	providers map[string]*Provider
 }
 
+type Provider interface {
+	Name() string
+	Handles() map[string]interface{}
+	Execute(...string, ...Argument) (*Command, error)
+}
+
+type Command interface {
+	Script() ([]byte, error)
+}
+
+type Argument struct {
+	Name string
+	Value interface{}
+}
+
 func(p *ProviderList) Add(newProvider *Provider) {
 	p.providers[newProvider.Name()] = newProvider
 }
