@@ -1,3 +1,3 @@
-module gitlab.com/ulombe/ulombe
+module github.com/edsonmichaque/ulombe
 
 go 1.15
