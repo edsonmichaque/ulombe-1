@@ -1,0 +1,10 @@
+if getent passwd  {{.Operation.Username}} > /dev/null; then
+    printf "User %s already exists\n", {{.Operation.Username}} 
+else
+	{{ .Command }}
+	if [ $? -eq 0 ]; then
+		echo "Created user {{.Operation.Username}} successfully"
+	else
+		echo "Error while creating user {{.Operation.Username}}"
+	fi
+fi
